@@ -1,25 +1,37 @@
-import { UserDetails } from '../../../../../types/UserDetails';
+import { AlumniDetails } from "../../../../../types/AlumniDetails";
 
-const packageData: UserDetails[] = [
+const alumniData: AlumniDetails[] = [
   {
     name: 'John Doe',
     email: 'HlCqA@example.com',
-    status: 'Online',
+    status: 'Permanent',
+    course: 'BSIT',
+    year: '2021',
+    yearOfJoining: '2021'
   },
   {
     name: 'John Tucker',
     email: 'tucker@gmail.com',
-    status: 'Unverified',
+    status: 'Unemployed',
+    course: 'BSIT',
+    year: '2021',
+    yearOfJoining: '2021'
   },
   {
     name: 'Juan Dela Cruz',
     email: 'juan@gmail.com',
-    status: 'Offline',
+    status: 'Contractual',
+    course: 'BSIT',
+    year: '2021',
+    yearOfJoining: '2021'
   },
   {
     name: 'James Potter',
     email: 'potter@gmail.com',
-    status: 'Online',
+    status: 'Self-employed',
+    course: 'BSIT',
+    year: '2021',
+    yearOfJoining: '2021'
   },
 ];
 
@@ -27,7 +39,7 @@ const UserTable = () => {
   return (
     <div className="rounded-sm border  border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
-       
+
         <table className="w-full table-auto">
           <thead>
             <tr className="bg-gray-2 text-left dark:bg-meta-4">
@@ -35,10 +47,13 @@ const UserTable = () => {
                 Name
               </th>
               <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
-                Email
+                Course
               </th>
               <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                Status
+                Employment Status
+              </th>
+              <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                Year Graduated
               </th>
               <th className="py-4 px-4 font-medium text-black dark:text-white">
                 Actions
@@ -46,7 +61,7 @@ const UserTable = () => {
             </tr>
           </thead>
           <tbody>
-            {packageData.map((packageItem, key) => (
+            {alumniData.map((packageItem, key) => (
               <tr key={key}>
                 <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                   <h5 className="font-medium text-black dark:text-white">
@@ -56,20 +71,27 @@ const UserTable = () => {
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <p className="text-black dark:text-white">
-                    {packageItem.email}
+                    {packageItem.course}
                   </p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <p
-                    className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium ${
-                      packageItem.status === 'Online'
+                    className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium 
+                      ${packageItem.status === 'Permanent'
                         ? 'bg-success text-success'
-                        : packageItem.status === 'Offline'
-                        ? 'bg-danger text-danger'
-                        : 'bg-warning text-warning'
-                    }`}
+                        : packageItem.status === 'Unemployed'
+                          ? 'bg-danger text-danger'
+                        : packageItem.status === 'Contractual'
+                          ? 'bg-primary text-primary'
+                        : 'bg-info text-info'
+                      }`}
                   >
                     {packageItem.status}
+                  </p>
+                </td>
+                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                  <p className="text-black dark:text-white">
+                    {packageItem.year}
                   </p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">

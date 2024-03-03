@@ -1,6 +1,4 @@
-import React from 'react'
-import LogoDark from '../../images/logo/logo-dark.svg';
-import Logo from '../../images/logo/logo.svg';
+import LogoDark from '../../_assets/images/logo/logo.png';
 import { Link } from 'react-router-dom'
 
 const LoginComponent = () => {
@@ -10,17 +8,15 @@ const LoginComponent = () => {
                 <div className="flex flex-wrap items-center">
                     <div className="hidden w-full xl:block xl:w-1/2">
                         <div className="py-17.5 px-26 text-center">
-                            <Link className="mb-5.5 inline-block" to="/">
-                                <img className="hidden dark:block" src={Logo} alt="Logo" />
+                            <Link className="mb-5.5 inline-block" to="#">
                                 <img className="dark:hidden" src={LogoDark} alt="Logo" />
                             </Link>
 
                             <p className="2xl:px-20">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                suspendisse.
+                                    Always Look Back Where You Came From
                             </p>
 
-                            <span className="mt-15 inline-block">
+                            {/* <span className="mt-15 inline-block">
                                 <svg
                                     width="350"
                                     height="350"
@@ -141,7 +137,7 @@ const LoginComponent = () => {
                                         fill="#1C2434"
                                     />
                                 </svg>
-                            </span>
+                            </span> */}
                         </div>
                     </div>
 
@@ -163,7 +159,6 @@ const LoginComponent = () => {
                                             placeholder="Enter your email"
                                             className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                                         />
-
                                         <span className="absolute right-4 top-4">
                                             <svg
                                                 className="fill-current"
@@ -266,7 +261,7 @@ const LoginComponent = () => {
 
                                 <div className="mt-6 text-center">
                                     <p>
-                                        Don’t have any account?{' '}
+                                        Not yet a member?{' '}
                                         <Link to="/account/create" className="text-primary">
                                             Sign Up
                                         </Link>

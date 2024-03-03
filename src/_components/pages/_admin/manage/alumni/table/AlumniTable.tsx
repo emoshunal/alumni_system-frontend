@@ -1,41 +1,23 @@
-import { AlumniDetails } from "../../../../../types/AlumniDetails";
+import  { useEffect, useState } from 'react'
+import IUsers from '../../../../../../_types/IUsers';
+import UserService from '../../../../../../_services/Service';
 
-const alumniData: AlumniDetails[] = [
-  {
-    name: 'John Doe',
-    email: 'HlCqA@example.com',
-    status: 'Permanent',
-    course: 'BSIT',
-    year: '2021',
-    yearOfJoining: '2021'
-  },
-  {
-    name: 'John Tucker',
-    email: 'tucker@gmail.com',
-    status: 'Unemployed',
-    course: 'BSIT',
-    year: '2021',
-    yearOfJoining: '2021'
-  },
-  {
-    name: 'Juan Dela Cruz',
-    email: 'juan@gmail.com',
-    status: 'Contractual',
-    course: 'BSIT',
-    year: '2021',
-    yearOfJoining: '2021'
-  },
-  {
-    name: 'James Potter',
-    email: 'potter@gmail.com',
-    status: 'Self-employed',
-    course: 'BSIT',
-    year: '2021',
-    yearOfJoining: '2021'
-  },
-];
+const UserTable: React.FC = () => {
+  const [users, setUsers] = useState<IUsers[]>([]);
 
-const UserTable = () => {
+  useEffect(() => {
+    retrieveUsers();
+  },[]);
+  const retrieveUsers = () => {
+    UserService.getAlumniUsers()
+      .then((response: any) => {
+        setUsers(response.data);
+        console.log(response.data);
+      })
+      .catch((e: Error) => {
+        console.log(e);
+      })
+  }
   return (
     <div className="rounded-sm border  border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
@@ -61,7 +43,7 @@ const UserTable = () => {
             </tr>
           </thead>
           <tbody>
-            {alumniData.map((packageItem, key) => (
+            {users.map((packageItem, key) => (
               <tr key={key}>
                 <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                   <h5 className="font-medium text-black dark:text-white">
@@ -77,21 +59,21 @@ const UserTable = () => {
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <p
                     className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium 
-                      ${packageItem.status === 'Permanent'
+                      ${packageItem.employment === 'Employed'
                         ? 'bg-success text-success'
-                        : packageItem.status === 'Unemployed'
+                        : packageItem.employment === 'Unemployed'
                           ? 'bg-danger text-danger'
-                        : packageItem.status === 'Contractual'
-                          ? 'bg-primary text-primary'
-                        : 'bg-info text-info'
+                          : packageItem.employment === 'Others'
+                            ? 'bg-primary text-primary'
+                            : 'bg-info text-info'
                       }`}
                   >
-                    {packageItem.status}
+                    {packageItem.employment}  
                   </p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <p className="text-black dark:text-white">
-                    {packageItem.year}
+                    {packageItem.batch}
                   </p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">

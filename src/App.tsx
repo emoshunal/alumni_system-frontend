@@ -21,6 +21,14 @@ import AdminDashboardComponent from './_components/pages/_admin/dashboard/AdminD
 import ManageUser from './_components/pages/_admin/manage/user/Manage';
 import AlumniManage from './_components/pages/_admin/manage/alumni/AlumniManage';
 import JobManage from './_components/pages/_admin/manage/jobs/JobManage';
+import TranscriptManage from './_components/pages/_admin/manage/transcript/TranscriptManage';
+import DiplomaManage from './_components/pages/_admin/manage/diploma/DiplomaManage';
+import SchooJobPostedComponent from './_components/pages/_school/SchoolJobPostedComponent';
+import SchoolAlumniManage from './_components/pages/_school/manage/alumni/SchoolAlumniManage';
+import SchoolTranscriptManage from './_components/pages/_school/manage/transcript/SchoolTranscriptManage';
+import SchoolDiplomaManage from './_components/pages/_school/manage/diploma/SchoolDiplomaManage';
+import LandingPage from './_components/pages/landing/LandingPage';
+import UpdateUser from './_components/pages/_admin/manage/user/update-form/UpdateUser';
 
 
 
@@ -41,12 +49,23 @@ function App() {
   ) : (
     <>
       <Routes>
-        <Route path="/" element={<LoginComponent />}></Route>
+        <Route path="/login" element={<LoginComponent />}></Route>
         <Route path="/account/create" element={<CreateAccountComponent />}></Route>
-        <Route path="/admin/dashboard" element={<AdminDashboardComponent />}></Route>
+        <Route path="/admin/dashboard" element={<AdminDashboardComponent isLoggedIn={true}/>}></Route>
         <Route path="/admin/manage/user" element={<ManageUser />}></Route>
+        <Route path="/admin/user/edit/:id" element={<UpdateUser />}></Route>
+
         <Route path="/admin/manage/alumni" element={<AlumniManage />}></Route>
         <Route path="/admin/manage/jobs" element={<JobManage />}></Route>
+        <Route path="/admin/manage/transcript" element={<TranscriptManage />}></Route>
+        <Route path="/admin/manage/diploma" element={<DiplomaManage />}></Route>
+
+        <Route path="/school/job-posted" element={<SchooJobPostedComponent />}></Route>
+        <Route path='/school/manage/alumni' element={<SchoolAlumniManage />}></Route>
+        <Route path="/school/manage/transcript" element={<SchoolTranscriptManage />}></Route>
+        <Route path='/school/manage/diploma' element={<SchoolDiplomaManage />}></Route>
+
+        <Route path="/" element={<LandingPage />}></Route>
         </Routes>
     </>
     // <>

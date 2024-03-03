@@ -9,7 +9,7 @@ interface SidebarProps {
    
 }
 
-const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
+const SidebarSchool = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     const location = useLocation();
     const { pathname } = location;
 
@@ -105,7 +105,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             {/* <!-- Menu Item Dashboard --> */}
                             <li>
                                 <NavLink
-                                    to="/admin/dashboard"
+                                    to="/school/job-posted"
                                     className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('calendar') &&
                                         'bg-graydark dark:bg-meta-4'
                                         }`}
@@ -135,7 +135,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                             fill=""
                                         />
                                     </svg>
-                                    Dashboard
+                                    Job Posted
                                 </NavLink>
                             </li>
                             <li>
@@ -219,18 +219,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                                 <ul className="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                                                     <li>
                                                         <NavLink
-                                                            to="/admin/manage/jobs"
-                                                            className={({ isActive }) =>
-                                                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
-                                                                (isActive && '!text-white')
-                                                            }
-                                                        >
-                                                            Jobs
-                                                        </NavLink>
-                                                    </li>
-                                                    <li>
-                                                        <NavLink
-                                                            to="/admin/manage/alumni"
+                                                            to="/school/manage/alumni"
                                                             className={({ isActive }) =>
                                                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                                                 (isActive && '!text-white')
@@ -239,20 +228,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                                             Alumni
                                                         </NavLink>
                                                     </li>
+                                                   
                                                     <li>
                                                         <NavLink
-                                                            to="/admin/manage/user"
-                                                            className={({ isActive }) =>
-                                                                'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
-                                                                (isActive && '!text-white')
-                                                            }
-                                                        >
-                                                            Users
-                                                        </NavLink>
-                                                    </li>
-                                                    <li>
-                                                        <NavLink
-                                                            to="/admin/manage/transcript"
+                                                            to="/school/manage/transcript"
                                                             className={({ isActive }) =>
                                                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                                                 (isActive && '!text-white')
@@ -263,7 +242,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                                     </li>
                                                     <li>
                                                         <NavLink
-                                                            to="/admin/manage/diploma"
+                                                            to="/school/manage/diploma"
                                                             className={({ isActive }) =>
                                                                 'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
                                                                 (isActive && '!text-white')
@@ -394,11 +373,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     </div>
                 </nav>
                 {/* <!-- Sidebar Menu --> */}
-            
-    
             </div>
         </aside>
     );
 };
 
-export default Sidebar;
+export default SidebarSchool;

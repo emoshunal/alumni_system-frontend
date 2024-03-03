@@ -7,8 +7,10 @@ import ChartTwo from './Charts/ChartTwo';
 import MapOne from './Maps/MapOne';
 
 
-const AdminDashboardComponent = () => {
+const AdminDashboardComponent = (props: { isLoggedIn: any; }) => {
+
   return (
+    props.isLoggedIn ?
     <>
       <Layout>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
@@ -107,8 +109,10 @@ const AdminDashboardComponent = () => {
 
 
       </Layout>
-    </>
+    </> 
+    : <h1>Please Login</h1>
   )
+  
 }
 
 export default AdminDashboardComponent
